@@ -791,7 +791,7 @@ jobs:
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
             --set-string="parser.env[0].value=true"  \
             --set="parser.env[1].name=PRODUCE_INVALID_FINDINGS" \
-            --set-string="parser.env[1].value=true"
+            --set-string="parser.env[1].value=true" \
             --set="scanner.image.pullPolicy=Never"
 
           cd tests/integration/
@@ -839,7 +839,7 @@ jobs:
             --set="parser.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="scanner.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
-            --set-string="parser.env[0].value=true"
+            --set-string="parser.env[0].value=true" \
             --set="scanner.image.pullPolicy=Never"
 
           helm -n integration-tests install http-webhook ./demo-targets/http-webhook
@@ -887,7 +887,7 @@ jobs:
             --set="parser.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="scanner.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
-            --set-string="parser.env[0].value=true"
+            --set-string="parser.env[0].value=true" \
             --set="scanner.image.pullPolicy=Never"
           helm -n integration-tests install http-webhook ./demo-targets/http-webhook --wait
 
