@@ -792,6 +792,8 @@ jobs:
             --set-string="parser.env[0].value=true"  \
             --set="parser.env[1].name=PRODUCE_INVALID_FINDINGS" \
             --set-string="parser.env[1].value=true"
+            --set="scanner.image.pullPolicy=Never"
+
           cd tests/integration/
           npx jest --ci --color generic/findings-validation.test.js
           helm -n integration-tests uninstall test-scan
@@ -820,7 +822,9 @@ jobs:
             --set="parser.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="scanner.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
-            --set-string="parser.env[0].value=true"
+            --set-string="parser.env[0].value=true" \
+            --set="scanner.image.pullPolicy=Never"
+
           cd tests/integration/
           npx jest --ci --color generic/read-write-hook.test.js
           helm -n integration-tests uninstall test-scan update-category update-severity
@@ -836,6 +840,8 @@ jobs:
             --set="scanner.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
             --set-string="parser.env[0].value=true"
+            --set="scanner.image.pullPolicy=Never"
+
           helm -n integration-tests install http-webhook ./demo-targets/http-webhook
           helm -n integration-tests install ro-hook ./hooks/generic-webhook/ \
             --set="hook.image.repository=docker.io/${{ env.DOCKER_NAMESPACE }}/hook-generic-webhook" \
@@ -882,6 +888,7 @@ jobs:
             --set="scanner.image.tag=sha-$(git rev-parse --short HEAD)" \
             --set="parser.env[0].name=CRASH_ON_FAILED_VALIDATION" \
             --set-string="parser.env[0].value=true"
+            --set="scanner.image.pullPolicy=Never"
           helm -n integration-tests install http-webhook ./demo-targets/http-webhook --wait
 
           helm -n integration-tests install notification-hook ./hooks/notification --values tests/integration/hooks/__testFiles__/notification-values.yaml \
