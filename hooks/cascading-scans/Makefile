@@ -11,6 +11,8 @@ hook = cascading-scans
 test_files = [hook.test.js, kube.test.js]
 
 include ../../hooks.mk
+include ../../Makefile
+PROJECT_DIR = ../..
 
 .PHONY: test-2
 test-2: | clean-integration-tests unit-tests docker-build docker-export kind-import deploy deploy-test-deps-2 integration-tests-2

@@ -65,6 +65,9 @@ parser-prefix = parser
 scanner-prefix = scanner
 hook-prefix = hook
 
+include ../../Makefile
+
+
 test: | clean-integration-tests unit-tests docker-build docker-export kind-import deploy deploy-test-deps integration-tests
 
 .PHONY: help unit-tests-hook install-deps docker-build docker-export kind-import deploy deploy-test-deps integration-tests all build test
@@ -184,9 +187,24 @@ clean:
 clean-integration-tests:
 	@echo ".: 🧹 Resetting 'integration-tests' namespace"
 	kubectl delete namespace integration-tests --wait || true
-	kubectl create namespace integration-tests
+	kubectl create namespace integration-tests+
 
 clean-demo-targets:
 	@echo ".: 🧹 Resetting 'demo-targets' namespace"
 	kubectl delete namespace demo-targets --wait || true
 	kubectl create namespace demo-targets
+
+clean-operator:
+	make -C $(OPERATOR_DIR) docker-build
+	make -C $(OPERATOR_DIR) docker-export
+	make -C $(OPERATOR_DIR) kind-import
+	rm $(OPERATOR_DIR)/operator.tar $(OPERATOR_DIR)/lurker.tar
+	make -C $(OPERATOR_DIR) helm-deploy
+
+clean-parser-sdk:
+	make -C $(PARSER_SDK_DIR) docker-build-sdk
+
+clean-hook-sdk:
+	make -C $(HOOK_SDK_DIR) docker-build-sdk
+	
+integration-tests: clean-operator clean-parser-sdk clean-hook-sdk deploy deploy-test-deps integration-tests

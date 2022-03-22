@@ -10,7 +10,7 @@ scanner = gitleaks
 
 include ../../scanners.mk
 
-integration-tests:
+integration-tests-ci:
 	@echo ".: 🩺 Starting integration test in kind namespace 'integration-tests'."
 	kubectl -n integration-tests delete scans --all
 	cd ../../tests/integration/ && npm ci

@@ -47,7 +47,7 @@ deploy:
 		--set="hook.image.tag=$(IMG_TAG)"
 
 .PHONY: integration-tests
-integration-tests:
+integration-tests-ci:
 	@echo ".: 🩺 Starting integration test in kind namespace 'integration-tests'."
 	kubectl -n integration-tests delete scans --all
 	cd $(hook-prefix) && npm ci && npm run test --package jest@$(JEST_VERSION)

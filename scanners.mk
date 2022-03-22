@@ -78,7 +78,7 @@ deploy-with-scanner:
 		--set="scanner.image.repository=docker.io/$(IMG_NS)/$(scanner-prefix)-$(name)" \
 		--set="scanner.image.tag=$(IMG_TAG)"
 
-integration-tests:
+integration-tests-ci:
 	@echo ".: 🩺 Starting integration test in kind namespace 'integration-tests'."
 	kubectl -n integration-tests delete scans --all
 	cd .. && npm ci && cd $(scanner)/integration-tests && npm run test --yes --package jest@$(JEST_VERSION) $(scanner)/integration-tests
