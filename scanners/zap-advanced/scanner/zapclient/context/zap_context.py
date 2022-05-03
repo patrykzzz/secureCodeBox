@@ -9,6 +9,8 @@
 import collections
 import logging
 
+from typing import List
+
 from zapv2 import ZAPv2
 
 from .. import ZapClient
