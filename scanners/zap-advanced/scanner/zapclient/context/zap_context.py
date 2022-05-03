@@ -308,7 +308,7 @@ class ZapConfigureContext(ZapClient):
         logging.warn("AlertFilter configured with unknown level: '%s'. This rule will be ignored!", level)
         return None
 
-    def _configure_alert_filters(self, alert_filters: list[collections.OrderedDict], context_id: int):
+    def _configure_alert_filters(self, alert_filters: List[collections.OrderedDict], context_id: int):
         """Protected method to configure the ZAP 'Context / Alert Filters' Settings based on a given ZAP config.
         
         Parameters

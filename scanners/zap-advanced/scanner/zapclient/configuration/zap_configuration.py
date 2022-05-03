@@ -98,7 +98,7 @@ class ZapConfiguration:
 
         Parameters
         ----------
-        configs: list[collections.OrderedDict]
+        configs: List[collections.OrderedDict]
             All configs available for this config type. E.g. all spider configs.
         key: str
             The key of the config object, e.g.
