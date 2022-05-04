@@ -299,7 +299,7 @@ jobs:
 
   zap-advanced:
     name: "Zap-advanced integration-test"
-    if: ${{ github.event_name == 'schedule' }}
+    #if: ${{ github.event_name == 'schedule' }}
     needs:
       - sdk
       - operator
@@ -318,8 +318,10 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./scanners/zap-advanced/
-        run: make install-deps
-
+        run: |
+          make install-deps
+          cd scanner
+          make init
       - name: Unit Tests
         working-directory: ./scanners/zap-advanced/
         run: make unit-tests
