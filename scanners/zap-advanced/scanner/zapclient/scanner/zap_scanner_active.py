@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 
 # SPDX-FileCopyrightText: the secureCodeBox authors
 #

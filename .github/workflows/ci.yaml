@@ -299,7 +299,7 @@ jobs:
 
   zap-advanced:
     name: "Zap-advanced integration-test"
-    if: ${{ github.event_name == 'schedule' }}
+    #if: ${{ github.event_name == 'schedule' }}
     needs:
       - sdk
       - operator
