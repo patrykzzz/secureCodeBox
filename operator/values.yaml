@@ -109,3 +109,9 @@ resources:
   requests:
     cpu: 100m
     memory: 20Mi
+
+# presignedUrlExpirationTimes -- Duration how long presigned urls are valid
+presignedUrlExpirationTimes:
+    scans: "24h"
+    parsers: "1h"
+    hooks: "1h"

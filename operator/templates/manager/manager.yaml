@@ -124,6 +124,12 @@ spec:
             - name: CUSTOM_CA_CERTIFICATE_NAME
               value: {{ .Values.customCACertificate.certificate | quote }}
             {{ end }}
+            - name: URL_EXPIRATION_SCAN
+              value: {{ .Values.presignedUrlExpirationTimes.scans | quote }}
+            - name: URL_EXPIRATION_PARSER
+              value: {{ .Values.presignedUrlExpirationTimes.parsers | quote }}
+            - name: URL_EXPIRATION_HOOK
+              value: {{ .Values.presignedUrlExpirationTimes.hooks | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           securityContext:
