@@ -125,7 +125,7 @@ spec:
               value: {{ .Values.customCACertificate.certificate | quote }}
             {{ end }}
             - name: URL_EXPIRATION_SCAN
-              value: {{ .Values.presignedUrlExpirationTimes.scans | quote }}
+              value: {{ .Values.presignedUrlExpirationTimes.scanners | quote }}
             - name: URL_EXPIRATION_PARSER
               value: {{ .Values.presignedUrlExpirationTimes.parsers | quote }}
             - name: URL_EXPIRATION_HOOK
