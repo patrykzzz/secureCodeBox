@@ -3,7 +3,7 @@ title: "Nuclei"
 category: "scanner"
 type: "Website"
 state: "released"
-appVersion: "v2.7.7"
+appVersion: "v2.8.1"
 usecase: "Nuclei is a fast, template based vulnerability scanner."
 ---
 
@@ -174,7 +174,7 @@ helm install nuclei secureCodeBox/nuclei --set="nucleiTemplateCache.enabled=fals
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| cascadingRules.enabled | bool | `true` | Enables or disables the installation of the default cascading rules for this scanner |
+| cascadingRules.enabled | bool | `false` | Enables or disables the installation of the default cascading rules for this scanner |
 | imagePullSecrets | list | `[]` | Define imagePullSecrets when a private registry is used (see: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) |
 | nucleiTemplateCache.accessMode | list | `["ReadWriteOnce","ReadOnlyMany"]` | Depending on your setup you can define the pvc access mode for one `ReadWriteOnce` or multiple node clusters `ReadWriteMany` |
 | nucleiTemplateCache.concurrencyPolicy | string | `"Replace"` | Determines how kubernetes handles cases where multiple instances of the cronjob would work if they are running at the same time. See: https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/#concurrency-policy |
@@ -187,6 +187,7 @@ helm install nuclei secureCodeBox/nuclei --set="nucleiTemplateCache.enabled=fals
 | parser.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images |
 | parser.image.repository | string | `"docker.io/securecodebox/parser-nuclei"` | Parser image repository |
 | parser.image.tag | string | defaults to the charts version | Parser image tag |
+| parser.resources | object | { requests: { cpu: "200m", memory: "100Mi" }, limits: { cpu: "400m", memory: "200Mi" } } | Optional resources lets you control resource limits and requests for the parser container. See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ |
 | parser.scopeLimiterAliases | object | `{}` | Optional finding aliases to be used in the scopeLimiter. |
 | parser.tolerations | list | `[]` | Optional tolerations settings that control how the parser job is scheduled (see: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) |
 | parser.ttlSecondsAfterFinished | string | `nil` | seconds after which the kubernetes job for the parser will be deleted. Requires the Kubernetes TTLAfterFinished controller: https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/ |

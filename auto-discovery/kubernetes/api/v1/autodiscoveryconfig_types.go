@@ -10,7 +10,7 @@ import (
 	cfg "sigs.k8s.io/controller-runtime/pkg/config/v1alpha1"
 )
 
-//+kubebuilder:object:root=true
+// +kubebuilder:object:root=true
 type AutoDiscoveryConfig struct {
 	metav1.TypeMeta `json:",inline"`
 
@@ -30,8 +30,9 @@ type ServiceAutoDiscoveryConfig struct {
 }
 
 type ContainerAutoDiscoveryConfig struct {
-	Enabled    bool       `json:"enabled"`
-	ScanConfig ScanConfig `json:"scanConfig"`
+	Enabled                  bool            `json:"enabled"`
+	PassiveReconcileInterval metav1.Duration `json:"passiveReconcileInterval"`
+	ScanConfig               ScanConfig      `json:"scanConfig"`
 }
 
 type ClusterConfig struct {
