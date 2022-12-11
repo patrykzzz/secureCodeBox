@@ -42,19 +42,20 @@ You can find resources to help you get started on our [documentation website](ht
 
 ## Supported Tags
 - `latest`  (represents the latest stable release build)
-- tagged releases, e.g. `v2.8.2`
+- tagged releases, e.g. `v1.5.0`
 
 ## How to use this image
-This `parser` image is intended to work in combination with the corresponding security scanner docker image to parse the `findings` results. For more information details please take a look at the documentation page: https://www.securecodebox.io/docs/scanners/nuclei.
+This `parser` image is intended to work in combination with the corresponding security scanner docker image to parse the `findings` results. For more information details please take a look at the documentation page: https://www.securecodebox.io/docs/scanners/ffuf.
 
 ```bash
-docker pull securecodebox/parser-nuclei
+docker pull securecodebox/parser-ffuf
 ```
 
-## What is Nuclei
-Nuclei is used to send requests across targets based on a template leading to zero false positives and providing fast scanning on large number of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS, HTTP, File, etc. With powerful and flexible templating, all kinds of security checks can be modelled with Nuclei.
+## What is ffuf?
+FFuf is an open source (MIT license) fuzzing tool to detect content and elements on webservers and web applications.
+People often use it as a web directory bruteforcer, but it is also capable of fuzzing much more than that (e.g. XSS, SQLi,...).
 
-To learn more about the Nuclei scanner itself visit [Nuclei GitHub] or [Nuclei Website].
+With this scanner the secure code box also installs SecLists wordlists.
 
 ## Community
 
@@ -80,6 +81,4 @@ As for any pre-built image usage, it is the image user's responsibility to ensur
 [scb-twitter]: https://twitter.com/secureCodeBox
 [scb-slack]: https://join.slack.com/t/securecodebox/shared_invite/enQtNDU3MTUyOTM0NTMwLTBjOWRjNjVkNGEyMjQ0ZGMyNDdlYTQxYWQ4MzNiNGY3MDMxNThkZjJmMzY2NDRhMTk3ZWM3OWFkYmY1YzUxNTU
 [scb-license]: https://github.com/secureCodeBox/secureCodeBox/blob/master/LICENSE
-[Nuclei Website]: https://nuclei.projectdiscovery.io/
-[Nuclei GitHub]: https://github.com/projectdiscovery/nuclei
-[Nuclei Documentation]: https://nuclei.projectdiscovery.io/nuclei/get-started/
+
